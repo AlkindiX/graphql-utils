@@ -1,5 +1,5 @@
 {
-  "name": "@jenyus-org/graphql-utils",
+  "name": "graphql-utils",
   "version": "1.5.1",
   "description": "GraphQL utilities to make working with GraphQL queries and APIs simpler.",
   "main": "dist/index.js",
