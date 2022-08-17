@@ -1,21 +1,15 @@
 # graphql-utils
 ![License: MIT](https://img.shields.io/github/license/Jenyus-Org/graphql-utils)
-![GitHub Checks](https://img.shields.io/github/workflow/status/Jenyus-Org/graphql-utils/Deploy%20package%20to%20NPM%20and%20GitHub%20package%20repository)
-![GitHub Issues](https://img.shields.io/github/issues/Jenyus-Org/graphql-utils)
-![GitHub Pull Requests](https://img.shields.io/github/issues-pr/Jenyus-Org/graphql-utils)
-![GitHub Stars](https://img.shields.io/github/stars/Jenyus-Org/graphql-utils?style=social)
+[![NPM Release](https://img.shields.io/npm/v/@jenyus-org/graphql-utils)](https://www.npmjs.com/package/@jenyus-org/graphql-utils)
+[![NPM Downloads](https://img.shields.io/npm/dw/@jenyus-org/graphql-utils)](https://www.npmjs.com/package/@jenyus-org/graphql-utils)
+[![NPM Type Definitions](https://img.shields.io/npm/types/@jenyus-org/graphql-utils)](https://www.npmjs.com/package/@jenyus-org/graphql-utils)
+
+`@jenyus-org/graphql-utils` is a collection of utilities to aid in working with GraphQL projects that have the [`graphql`](https://github.com/graphql/graphql-js) library as a base.
 
 - [graphql-utils](#graphql-utils)
   - [Documentation](#documentation)
   - [Installation](#installation)
-  - [License](#license)
-
-`graphql-utils` is a set of NPM packages with utilities for GraphQL.js based projects to aid in implementing complex APIs and working with the GraphQL AST.
-
-It currently consists of two packages:
-
- - [`graphql-utils`](./graphql-utils/README.md): GraphQL utility functions compatible with any implementation of GraphQL that uses the [`graphql`](https://github.com/graphql/graphql-js) library as a base.
- - [`nestjs-graphql-utils`](./nestjs-graphql-utils/README.md): Utilities wrapped in NestJS `ParamDecorator` to encourage the stateless nature of NestJS GraphQL resolvers.
+  - [Getting Started](#getting-started)
 
 ## Documentation
 
@@ -23,10 +17,53 @@ The full documentation with live code sandboxes can be found [here](https://jeny
 
 ## Installation
 
-The packages can be installed via the `npm` and Yarn package managers. It's as easy as running `npm i @jenyus-org/<package-name>` or `yarn add @jenyus-org/<package-name>`.
+`@jenyus-org/graphql-utils` can be installed from NPM by running one of the following commands:
 
-For more information see the individual package folders and their respective READMEs.
+NPM:
 
-## License
+```bash
+npm i --save @jenyus-org/graphql-utils
+```
 
-This project is licensed under the terms of the MIT license.
+Yarn:
+
+```bash
+yarn add @jenyus-org/graphql-utils
+```
+
+This will install `@jenyus-org/graphql-utils` and all its dependencies.
+
+## Getting Started
+
+One of the most straightforward and common use-cases of GraphQL-Utils is checking if a query contains a certain path. We can do this using the `hasFields()` utility:
+
+```ts
+import { hasFields } from "@jenyus-org/graphql-utils";
+
+const resolvers = {
+  Query: {
+    posts(_, __, ___, info) {
+      const requestedAuthor = hasFields(info, "posts.author");
+      console.log(requestedAuthor);
+    },
+  },
+};
+```
+
+This will output `true` for the following query:
+
+```graphql
+{
+  posts {
+    id
+    title
+    body
+    author {
+      id
+      username
+      firstName
+      lastName
+    }
+  }
+}
+```
