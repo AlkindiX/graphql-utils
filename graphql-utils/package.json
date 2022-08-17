@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "contributors": [
     "Dominik Berger (https://doemuulive-56e78.web.app/)",
-    "RaviAnand Mohabir <moravrav@gmail.com> (https://ravianand.web.app)"
+    "RaviAnand Mohabir <moravrav@gmail.com> (https://ravianand.web.app)",
+    "Mohammed Alkindi <salkindi2009@gmail.com>"
   ],
   "keywords": [
     "typescript",
@@ -19,7 +20,7 @@
     "prepare": "npm run build",
     "test": "mocha -r ts-node/register src/**/*.test.ts"
   },
-  "repository": "https://github.com/Jenyus-Org/graphql-utils.git",
+  "repository": "https://github.com/AlkindiX/graphql-utils.git",
   "license": "MIT",
   "private": false,
   "types": "dist/index.d.ts",
